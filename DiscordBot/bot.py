@@ -107,6 +107,10 @@ class ModBot(discord.Client):
                     # Report already started on the moderator end, call handle_mod_channel()  
                     elif self.mod_in_progress and message.content != "start":
                         await self.handle_mod_channel(message)
+                elif message.content == "start":
+                    reply = "There are currently no reports to be reviewed."
+                    for r in [reply]:
+                        await message.channel.send(r)
         else:
             await self.handle_dm(message)
 
